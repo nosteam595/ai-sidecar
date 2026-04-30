@@ -1,0 +1,19 @@
+prometheus:
+  url: "http://cluster.local"
+
+pushgateway:
+  url: "pushgateway.monitoring.svc.cluster.local:9091"
+
+monitoring:
+  interval: 60000
+
+spring:
+  application:
+    name: ai-sidecar
+  main:
+    web-application-type: none
+
+logging:
+  level:
+    root: INFO
+    ru.yourproject.ai: DEBUG
