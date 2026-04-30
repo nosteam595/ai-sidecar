@@ -34,7 +34,7 @@ public class MonitoringScheduler {
         try {
             log.info("Начало цикла анализа метрик...");
 
-            String metricQuery = "rate(kafka_consumer_process_time_seconds_sum[5m])";
+            String metricQuery = "rate(spring_kafka_listener_seconds_sum[1m])";
             List<Double> metrics = prometheusClient.fetchMetrics(metricQuery, 120);
 
             if (metrics.isEmpty()) {

@@ -1,8 +1,8 @@
 prometheus:
-  url: "http://cluster.local"
+  url: "http://prometheus-service:9090"
 
 pushgateway:
-  url: "pushgateway.monitoring.svc.cluster.local:9091"
+  url: "pushgateway:9091"
 
 monitoring:
   interval: 60000
@@ -16,4 +16,4 @@ spring:
 logging:
   level:
     root: INFO
-    ru.yourproject.ai: DEBUG
+    com.example.ai_sidecar: DEBUG

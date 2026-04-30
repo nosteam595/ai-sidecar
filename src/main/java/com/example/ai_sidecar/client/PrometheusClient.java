@@ -27,9 +27,17 @@ public class PrometheusClient {
                         .build())
                 .retrieve()
                 .bodyToMono(PrometheusResponse.class)
-                .map(response -> response.data().result().get(0).values().stream()
-                        .map(v -> Double.parseDouble(v.get(1).toString()))
-                        .toList())
+                .map(response -> {
+                    if (response == null ||
+                            response.data() == null ||
+                            response.data().result() == null ||
+                            response.data().result().isEmpty()) {
+                        return new java.util.ArrayList<Double>();
+                    }
+                    return response.data().result().get(0).values().stream()
+                            .map(v -> Double.parseDouble(v.get(1).toString()))
+                            .toList();
+                })
                 .block();
     }
 }
