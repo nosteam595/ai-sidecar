@@ -45,7 +45,7 @@ public class MonitoringScheduler {
             double score = anomalyEngine.calculateAnomalyScore(metrics);
             log.info("Текущий score аномальности: {}", score);
 
-            double status = (score > 0.5) ? 1.0 : 0.0;
+            double status = (score > 0.31) ? 1.0 : 0.0;
             anomalyGauge.labels("kafka_latency").set(status);
 
             if (status > 0) {
